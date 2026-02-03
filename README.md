@@ -2,13 +2,44 @@
 
 ## Sobre la Asignatura
 
-Proyectos Interactivos 2 (PI2) es una asignatura que se centra en el desarrollo de proyectos interactivos utilizando tecnologías web y el modelo cliente-servidor.
+Proyectos Interactivos 2 (PI2) es una asignatura enfocada en el desarrollo de aplicaciones web completas utilizando tecnologías modernas y el modelo cliente-servidor. La asignatura combina el desarrollo backend con Node.js y Express, junto con el frontend utilizando frameworks modernos de Javascript.
+
+### Objetivos principales:
+
+- **Desarrollo Full-Stack**: Dominar tanto el lado del servidor como del cliente
+- **Node.js como base**: Utilizar Node.js tanto para implementar servidores como para tooling de desarrollo
+- **Frameworks modernos**: Integración con herramientas actuales del ecosistema JavaScript
+- **Proyectos interactivos**: Crear aplicaciones web dinámicas y responsivas
+- **Arquitecturas escalables**: Comprender patrones de diseño web modernos
+
+### Competencias a desarrollar:
+
+- Implementación de APIs RESTful
+- Gestión de bases de datos
+- Desarrollo de interfaces de usuario interactivas
+- Deploy y configuración de aplicaciones web
+- Trabajo colaborativo con control de versiones
+
+### Prerrequisitos:
+
+- Conocimientos sólidos de HTML, CSS y JavaScript
+- Fundamentos de programación orientada a objetos
 
 ## Sesiones Completadas
 
-| #   | Sesión                                                                       | Descripción                                                                                                   | Proyectos  |
-| --- | ---------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- | ---------- |
-| 1   | [Sesión 01 - Introducción a Node.js y Express](sessions/session01/README.md) | Introducción al curso, instalación de herramientas, Node.js REPL, npm, Express, arquitectura cliente-servidor | helloworld |
+| #   | Sesión                                                                       | Descripción                                                                                                   | Proyectos                                             |
+| --- | ---------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------- |
+| 1   | [Sesión 01 - Introducción a Node.js y Express](sessions/session01/README.md) | Introducción al curso, instalación de herramientas, Node.js REPL, npm, Express, arquitectura cliente-servidor | [helloworld](sessions/session01/projects/helloworld/) |
+
+## Recursos Adicionales
+
+### Documentación Oficial:
+
+- [Node.js Documentation](https://nodejs.org/docs/)
+- [Express.js Guide](https://expressjs.com/en/guide/)
+- [Astro Documentation](https://docs.astro.build/)
+- [Vue.js Documentation](https://vuejs.org/guide/)
+- [React Documentation](https://react.dev/)
 
 ## Estructura del Repositorio
 
@@ -20,9 +51,4 @@ PI2-2526/
         ├── README.md
         └── projects/
             └── helloworld/ # Proyecto: Primer servidor Express
-                ├── index.js
-                ├── package.json
-                └── public/
-                    ├── index.html
-                    └── otro.html
 ```
