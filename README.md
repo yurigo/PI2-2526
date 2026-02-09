@@ -30,6 +30,7 @@ Proyectos Interactivos 2 (PI2) es una asignatura enfocada en el desarrollo de ap
 | #   | Sesión                                                                       | Descripción                                                                                                   | Proyectos                                             |
 | --- | ---------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------- |
 | 1   | [Sesión 01 - Introducción a Node.js y Express](sessions/session01/README.md) | Introducción al curso, instalación de herramientas, Node.js REPL, npm, Express, arquitectura cliente-servidor | [helloworld](sessions/session01/projects/helloworld/) |
+| 2   | [Sesión 02 - APIs REST, Verbos HTTP y CRUD](sessions/session02/README.md) | APIs RESTful, códigos de estado HTTP, verbos HTTP (GET, POST, PUT, DELETE), operaciones CRUD completas | [todos](sessions/session02/projects/todos/) |
 
 ## Recursos Adicionales
 
@@ -47,8 +48,12 @@ Proyectos Interactivos 2 (PI2) es una asignatura enfocada en el desarrollo de ap
 PI2-2526/
 ├── README.md
 └── sessions/
-    └── session01/          # Introducción a Node.js y Express
+    ├── session01/          # Introducción a Node.js y Express
+    │   ├── README.md
+    │   └── projects/
+    │       └── helloworld/ # Proyecto: Primer servidor Express
+    └── session02/          # APIs REST, Verbos HTTP y CRUD
         ├── README.md
         └── projects/
-            └── helloworld/ # Proyecto: Primer servidor Express
+            └── todos/      # Proyecto: API REST para gestión de tareas
 ```
