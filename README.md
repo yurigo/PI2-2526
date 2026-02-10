@@ -27,10 +27,10 @@ Proyectos Interactivos 2 (PI2) es una asignatura enfocada en el desarrollo de ap
 
 ## Sesiones Completadas
 
-| #   | Sesión                                                                       | Descripción                                                                                                   | Proyectos                                             |
-| --- | ---------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------- |
-| 1   | [Sesión 01 - Introducción a Node.js y Express](sessions/session01/README.md) | Introducción al curso, instalación de herramientas, Node.js REPL, npm, Express, arquitectura cliente-servidor | [helloworld](sessions/session01/projects/helloworld/) |
-| 2   | [Sesión 02 - APIs REST, Verbos HTTP y CRUD](sessions/session02/README.md) | APIs RESTful, códigos de estado HTTP, verbos HTTP (GET, POST, PUT, DELETE), operaciones CRUD completas | [todos](sessions/session02/projects/todos/) |
+| #   | Sesión                                                                       | Descripción                                                                                                   | Proyectos                                                                                                    |
+| --- | ---------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------ |
+| 1   | [Sesión 01 - Introducción a Node.js y Express](sessions/session01/README.md) | Introducción al curso, instalación de herramientas, Node.js REPL, npm, Express, arquitectura cliente-servidor | [helloworld](sessions/session01/projects/helloworld/)                                                        |
+| 2   | [Sesión 02 - APIs REST, Verbos HTTP y CRUD](sessions/session02/README.md)    | APIs RESTful, códigos de estado HTTP, verbos HTTP (GET, POST, PUT, DELETE), operaciones CRUD completas        | [todos](sessions/session02/projects/todos/), [⚠ todos-improved](sessions/session02/projects/todos-improved/) |
 
 ## Recursos Adicionales
 
@@ -55,5 +55,6 @@ PI2-2526/
     └── session02/          # APIs REST, Verbos HTTP y CRUD
         ├── README.md
         └── projects/
-            └── todos/      # Proyecto: API REST para gestión de tareas
+            ├── todos/      # Proyecto: API REST para gestión de tareas
+            └── todos-improved/ # Proyecto: API REST mejorada con arquitectura en capas
 ```
