@@ -7,6 +7,7 @@
 En esta sesión profundizamos en la creación de APIs RESTful (Representational State Transfer), un estilo de arquitectura para servicios web que utiliza los métodos estándar de HTTP para realizar operaciones sobre recursos.
 
 **Conceptos clave**:
+
 - **API REST**: Interfaz de programación de aplicaciones que sigue los principios REST
 - **Recurso**: Entidad que puede ser accedida y manipulada (en nuestro caso, "todos")
 - **Endpoint**: URL específica que responde a peticiones HTTP
@@ -24,21 +25,21 @@ Crear una API REST completa que gestione una lista de tareas (todos), implementa
 
 Los códigos de estado HTTP indican el resultado de una petición:
 
-| Código | Significado | Uso en nuestra API |
-|--------|-------------|-------------------|
-| 200 | OK | Operación exitosa (GET, PUT, DELETE) |
-| 201 | Created | Recurso creado exitosamente (POST) |
-| 404 | Not Found | Recurso no encontrado |
-| 500 | Internal Server Error | Error del servidor |
+| Código | Significado           | Uso en nuestra API                   |
+| ------ | --------------------- | ------------------------------------ |
+| 200    | OK                    | Operación exitosa (GET, PUT, DELETE) |
+| 201    | Created               | Recurso creado exitosamente (POST)   |
+| 404    | Not Found             | Recurso no encontrado                |
+| 500    | Internal Server Error | Error del servidor                   |
 
 ### Verbos HTTP
 
-| Verbo | Propósito | Idempotente | Ejemplo |
-|-------|-----------|-------------|---------|
-| GET | Obtener recursos | ✅ Sí | Leer lista de todos |
-| POST | Crear nuevo recurso | ❌ No | Crear nuevo todo |
-| PUT | Actualizar recurso completo | ✅ Sí | Marcar todo como completado |
-| DELETE | Eliminar recurso | ✅ Sí | Eliminar un todo |
+| Verbo  | Propósito                   | Idempotente | Ejemplo                     |
+| ------ | --------------------------- | ----------- | --------------------------- |
+| GET    | Obtener recursos            | ✅ Sí       | Leer lista de todos         |
+| POST   | Crear nuevo recurso         | ❌ No       | Crear nuevo todo            |
+| PUT    | Actualizar recurso completo | ✅ Sí       | Marcar todo como completado |
+| DELETE | Eliminar recurso            | ✅ Sí       | Eliminar un todo            |
 
 > **Idempotente**: Una operación es idempotente si ejecutarla múltiples veces produce el mismo resultado que ejecutarla una sola vez.
 
@@ -49,12 +50,12 @@ Los códigos de estado HTTP indican el resultado de una petición:
 ```json
 {
   "dependencies": {
-    "express": "^5.2.1",    // Framework web
-    "chalk": "^5.6.2",       // Colores en consola
-    "cors": "^2.8.6"         // Cross-Origin Resource Sharing
+    "express": "^5.2.1", // Framework web
+    "chalk": "^5.6.2", // Colores en consola
+    "cors": "^2.8.6" // Cross-Origin Resource Sharing
   },
   "devDependencies": {
-    "nodemon": "^3.1.11"     // Recarga automática
+    "nodemon": "^3.1.11" // Recarga automática
   }
 }
 ```
@@ -69,8 +70,8 @@ import cors from "cors";
 const app = express();
 
 // Middlewares
-app.use(express.json());  // Parsea el body de las peticiones JSON
-app.use(cors());          // Permite peticiones desde otros orígenes
+app.use(express.json()); // Parsea el body de las peticiones JSON
+app.use(cors()); // Permite peticiones desde otros orígenes
 ```
 
 #### ¿Qué es CORS?
@@ -81,10 +82,10 @@ app.use(cors());          // Permite peticiones desde otros orígenes
 
 ```javascript
 let todos = [
-    { id: 1, text: "aprender node", done: false },
-    { id: 2, text: "aprender javascript", done: false },
-    { id: 3, text: "aprender express", done: false },
-    { id: 4, text: "ver videos de node", done: false },
+  { id: 1, text: "aprender node", done: false },
+  { id: 2, text: "aprender javascript", done: false },
+  { id: 3, text: "aprender express", done: false },
+  { id: 4, text: "ver videos de node", done: false },
 ];
 ```
 
@@ -95,9 +96,11 @@ let todos = [
 ### 1. Página de Inicio
 
 ```javascript
-app.get("/", function(req, res) {
-    res.send("<a href='http://localhost:3000/todos'>click aqui para ver los todos</a>")
-})
+app.get("/", function (req, res) {
+  res.send(
+    "<a href='http://localhost:3000/todos'>click aqui para ver los todos</a>",
+  );
+});
 ```
 
 - **Método**: GET
@@ -108,9 +111,9 @@ app.get("/", function(req, res) {
 ### 2. Obtener Todos los Todos (GET ALL)
 
 ```javascript
-app.get("/todos", function(req, res){
-    res.status(200).send(todos);
-})
+app.get("/todos", function (req, res) {
+  res.status(200).send(todos);
+});
 ```
 
 - **Método**: GET
@@ -128,14 +131,14 @@ app.get("/todos", function(req, res){
 ### 3. Obtener un Todo por ID (GET Individual)
 
 ```javascript
-app.get("/todos/:ID", function(req, res) {
-    const ID = parseInt(req.params.ID);
-    
-    const found = todos.find(function(unTodo){
-        return unTodo.id === ID;
-    })
-    
-    res.status(200).send(found);
+app.get("/todos/:ID", function (req, res) {
+  const ID = parseInt(req.params.ID);
+
+  const found = todos.find(function (unTodo) {
+    return unTodo.id === ID;
+  });
+
+  res.status(200).send(found);
 });
 ```
 
@@ -151,6 +154,7 @@ app.get("/todos/:ID", function(req, res) {
   ```
 
 **Conceptos clave**:
+
 - **req.params**: Objeto que contiene los parámetros de la ruta
 - **parseInt()**: Convierte string a número
 - **Array.find()**: Busca el primer elemento que cumple la condición
@@ -158,11 +162,11 @@ app.get("/todos/:ID", function(req, res) {
 ### 4. Crear un Nuevo Todo (POST)
 
 ```javascript
-app.post("/todos", function(req, res){
-    const newTodo = req.body;
-    newTodo.id = todos.length + 1;
-    todos.push(newTodo);
-    res.status(201).send(newTodo);
+app.post("/todos", function (req, res) {
+  const newTodo = req.body;
+  newTodo.id = todos.length + 1;
+  todos.push(newTodo);
+  res.status(201).send(newTodo);
 });
 ```
 
@@ -183,6 +187,7 @@ app.post("/todos", function(req, res){
   ```
 
 **Conceptos clave**:
+
 - **req.body**: Contiene los datos enviados en el cuerpo de la petición
 - **express.json()**: Middleware que parsea el JSON automáticamente
 - **Status 201**: Indica que se creó un nuevo recurso
@@ -190,13 +195,13 @@ app.post("/todos", function(req, res){
 ### 5. Eliminar un Todo (DELETE)
 
 ```javascript
-app.delete("/todos/:ID", function(req, res){
-    const ID = parseInt(req.params.ID);
-    
-    const found = todos.find( (e) => e.id === ID );
-    todos = todos.filter( (e) => e.id !== ID );
-    
-    res.status(200).send(found);
+app.delete("/todos/:ID", function (req, res) {
+  const ID = parseInt(req.params.ID);
+
+  const found = todos.find((e) => e.id === ID);
+  todos = todos.filter((e) => e.id !== ID);
+
+  res.status(200).send(found);
 });
 ```
 
@@ -209,24 +214,25 @@ app.delete("/todos/:ID", function(req, res){
 - **Respuesta**: El todo eliminado
 
 **Conceptos clave**:
+
 - **Array.filter()**: Crea un nuevo array sin el elemento eliminado
 - **Arrow functions**: Sintaxis moderna `(e) => e.id !== ID`
 
 ### 6. Actualizar un Todo (PUT)
 
 ```javascript
-app.put("/todos/:ID", function(req, res){
-    const ID = parseInt(req.params.ID);
-    const newData = req.body;
-    
-    const found = todos.find((element) => {
-        return element.id === ID
-    });
-    
-    found.done = newData.done;
-    
-    res.status(200).send(found);
-})
+app.put("/todos/:ID", function (req, res) {
+  const ID = parseInt(req.params.ID);
+  const newData = req.body;
+
+  const found = todos.find((element) => {
+    return element.id === ID;
+  });
+
+  found.done = newData.done;
+
+  res.status(200).send(found);
+});
 ```
 
 - **Método**: PUT
@@ -247,14 +253,14 @@ app.put("/todos/:ID", function(req, res){
 
 ## 🎯 Tabla Resumen de Endpoints
 
-| Método | Endpoint | Acción | Status | Body |
-|--------|----------|--------|--------|------|
-| GET | `/` | Página inicio | 200 | - |
-| GET | `/todos` | Listar todos | 200 | - |
-| GET | `/todos/:ID` | Obtener uno | 200 | - |
-| POST | `/todos` | Crear nuevo | 201 | `{ text, done }` |
-| PUT | `/todos/:ID` | Actualizar | 200 | `{ done }` |
-| DELETE | `/todos/:ID` | Eliminar | 200 | - |
+| Método | Endpoint     | Acción        | Status | Body             |
+| ------ | ------------ | ------------- | ------ | ---------------- |
+| GET    | `/`          | Página inicio | 200    | -                |
+| GET    | `/todos`     | Listar todos  | 200    | -                |
+| GET    | `/todos/:ID` | Obtener uno   | 200    | -                |
+| POST   | `/todos`     | Crear nuevo   | 201    | `{ text, done }` |
+| PUT    | `/todos/:ID` | Actualizar    | 200    | `{ done }`       |
+| DELETE | `/todos/:ID` | Eliminar      | 200    | -                |
 
 ## 🧪 Probando la API
 
@@ -285,41 +291,41 @@ curl -X DELETE http://localhost:3000/todos/1
 
 ```javascript
 // GET - Obtener todos
-fetch('http://localhost:3000/todos')
-  .then(res => res.json())
-  .then(data => console.log(data));
+fetch("http://localhost:3000/todos")
+  .then((res) => res.json())
+  .then((data) => console.log(data));
 
 // POST - Crear nuevo
-fetch('http://localhost:3000/todos', {
-  method: 'POST',
-  headers: { 'Content-Type': 'application/json' },
-  body: JSON.stringify({ text: 'nueva tarea', done: false })
+fetch("http://localhost:3000/todos", {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify({ text: "nueva tarea", done: false }),
 })
-  .then(res => res.json())
-  .then(data => console.log(data));
+  .then((res) => res.json())
+  .then((data) => console.log(data));
 
 // PUT - Actualizar
-fetch('http://localhost:3000/todos/1', {
-  method: 'PUT',
-  headers: { 'Content-Type': 'application/json' },
-  body: JSON.stringify({ done: true })
+fetch("http://localhost:3000/todos/1", {
+  method: "PUT",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify({ done: true }),
 })
-  .then(res => res.json())
-  .then(data => console.log(data));
+  .then((res) => res.json())
+  .then((data) => console.log(data));
 
 // DELETE - Eliminar
-fetch('http://localhost:3000/todos/1', {
-  method: 'DELETE'
+fetch("http://localhost:3000/todos/1", {
+  method: "DELETE",
 })
-  .then(res => res.json())
-  .then(data => console.log(data));
+  .then((res) => res.json())
+  .then((data) => console.log(data));
 ```
 
 ## 🔧 Iniciando el Servidor
 
 ```javascript
-app.listen(3000, function(){
-    console.log(chalk.blue("http://localhost:3000"));
+app.listen(3000, function () {
+  console.log(chalk.blue("http://localhost:3000"));
 });
 ```
 
@@ -352,8 +358,8 @@ npm start
 ### 3. Middleware en Express
 
 ```javascript
-app.use(express.json());  // Middleware de aplicación
-app.use(cors());          // Middleware de terceros
+app.use(express.json()); // Middleware de aplicación
+app.use(cors()); // Middleware de terceros
 ```
 
 > **Middleware**: Funciones que tienen acceso a los objetos `req` y `res`, y pueden modificarlos o terminar el ciclo de petición-respuesta.
@@ -367,6 +373,7 @@ app.use(cors());          // Middleware de terceros
 ### 5. Operaciones CRUD completas
 
 Ahora sabemos implementar las cuatro operaciones básicas:
+
 - ✅ **C**reate (POST)
 - ✅ **R**ead (GET)
 - ✅ **U**pdate (PUT)
@@ -390,17 +397,30 @@ Para una versión más robusta de esta API, considera:
 - [Qué es una API REST](https://www.youtube.com/watch?v=s7wmiS2mSXY)
 - [HTTP Status Codes Explained](https://www.youtube.com/watch?v=VLH3FMQ5BIQ)
 
+### 📚 Estudio de la versión mejorada
+
+**Se recomienda encarecidamente:** Analiza y comprende el código de `todos-improved/`
+
+- Observa cómo se organiza el código en capas
+- Entiende el flujo de una petición desde `index.js` → controlador → DAO → datos
+- Identifica las diferencias entre la versión original y mejorada
+- Practica refactorizando código en capas
+
+Este es un paso importante para escribir código profesional y escalable.
+
 ### 🧠 Reflexiones
 
 1. ¿Por qué es importante usar los verbos HTTP correctos?
 2. ¿Qué ventajas tiene separar el frontend del backend mediante una API?
 3. ¿Cómo mejorarías la gestión de errores en esta API?
+4. ¿Qué beneficios tiene la arquitectura en capas respecto al código monolítico?
 
 ### 🔍 Investigación opcional
 
 - Explora Postman o Thunder Client para probar APIs
 - Investiga sobre códigos de estado HTTP de la familia 4xx y 5xx
 - Lee sobre las diferencias entre PUT y PATCH
+- Investiga sobre patrones DAO (Data Access Object) y MVC
 
 ## 📁 Estructura del Proyecto
 
@@ -410,3 +430,46 @@ todos/
 ├── index.js              # Servidor con API REST completa
 └── node_modules/         # Dependencias instaladas
 ```
+
+---
+
+## 🚀 Versión Mejorada: `todos-improved`
+
+**⏰ Desarrollado fuera de las horas de sesión como mejora del código original**
+
+Se ha creado una versión refactorizada del proyecto que implementa **mejores prácticas de desarrollo** y **arquitectura en capas**:
+
+### ✨ Características de la versión mejorada
+
+- **Arrow Functions**: Todo el código utiliza sintaxis moderna de funciones flecha
+- **Arquitectura Modular**: Separación clara de responsabilidades en capas
+- **Código más legible**: Estructura organizada y fácil de mantener
+- **Escalabilidad**: Preparado para futuras expansiones
+
+### 📂 Estructura del proyecto mejorado
+
+```
+todos-improved/
+├── package.json                    # Dependencias del proyecto
+├── index.js                        # Punto de entrada (rutas únicamente)
+├── data.js                         # Almacenamiento de datos
+├── dao/
+│   └── todos.dao.js               # Capa de acceso a datos (Data Access Object)
+├── controller/
+│   └── todos.controller.js        # Lógica de negocio y controladores
+└── node_modules/                   # Dependencias instaladas
+```
+
+### 🏗️ Arquitectura en Capas
+
+1. **Capa de Presentación** (`index.js`): Solo define las rutas
+2. **Capa de Controladores** (`controller/todos.controller.js`): Maneja las peticiones HTTP
+3. **Capa de Datos** (`dao/todos.dao.js`): Operaciones CRUD sobre los datos
+4. **Capa de Almacenamiento** (`data.js`): Datos centralizados
+
+### 💡 Ventajas de esta estructura
+
+- **Mantenibilidad**: Cambios aislados a su capa correspondiente
+- **Testabilidad**: Cada capa puede probarse independientemente
+- **Reutilización**: Funciones DAO pueden usarse desde múltiples controladores
+- **Profesionalismo**: Sigue patrones de desarrollo reales
