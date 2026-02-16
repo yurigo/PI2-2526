@@ -32,6 +32,12 @@ Proyectos Interactivos 2 (PI2) es una asignatura enfocada en el desarrollo de ap
 | 1   | [Sesión 01 - Introducción a Node.js y Express](sessions/session01/README.md) | Introducción al curso, instalación de herramientas, Node.js REPL, npm, Express, arquitectura cliente-servidor | [helloworld](sessions/session01/projects/helloworld/)                                                        |
 | 2   | [Sesión 02 - APIs REST, Verbos HTTP y CRUD](sessions/session02/README.md)    | APIs RESTful, códigos de estado HTTP, verbos HTTP (GET, POST, PUT, DELETE), operaciones CRUD completas        | [todos](sessions/session02/projects/todos/)<br>[⚠&nbsp;todos&#8209;improved&nbsp;⚠](sessions/session02/projects/todos-improved/) |
 
+## 📝 Actividades
+
+| Sesión | Actividad                                                                    | Descripción                                                                | Deadline                         |
+| ------ | ---------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------- |
+| 2      | [Spotify API REST - Artistas y Canciones](sessions/session02/ENUNCIADO.md) | API REST con rutas anidadas para gestionar artistas y sus canciones (CRUD) | 22 de febrero de 2026 a las 23:59 |
+
 ## Recursos Adicionales
 
 ### Documentación Oficial:
