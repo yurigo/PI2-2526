@@ -390,6 +390,32 @@ Para una versión más robusta de esta API, considera:
 5. **Paginación**: Limitar resultados en GET `/todos`
 6. **Búsqueda y filtrado**: Añadir query parameters como `?done=true`
 
+## 📝 Actividad: Spotify API REST
+
+**[Ver enunciado completo: ENUNCIADO.md](ENUNCIADO.md)**
+
+**Deadline**: 22 de febrero de 2026 a las 23:59
+
+### Descripción
+
+Crear una API REST para gestionar **artistas** y sus **canciones** usando **rutas anidadas**. Esta actividad aplica los conceptos de CRUD vistos en sesión, pero con la particularidad de que las canciones solo son accesibles a través de su artista (`/artists/:idArtist/songs`).
+
+### Requisitos principales
+
+- Implementar CRUD completo para artistas
+- Implementar CRUD anidado para canciones de cada artista
+- Validación de datos y códigos de estado HTTP apropiados
+- Datos en memoria (sin base de datos)
+
+### Entregables
+
+El proyecto debe incluir:
+- Código fuente + `package.json`
+- README con instrucciones de uso y screenshots de pruebas
+- Capturas de pantalla probando los endpoints principales
+
+---
+
 ## 🏠 Tareas para la Próxima Sesión
 
 ### 📺 Videos recomendados
