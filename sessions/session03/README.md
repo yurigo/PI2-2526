@@ -21,13 +21,14 @@ En esta sesión se ha corregido en clase un ejercicio entregado por un estudiant
 
 ```
 from/
+├── README.md
 ├── package-lock.json
-└── package.json   ← ⚠️ todo el código de la aplicación en un único archivo
+├── package.json
+└── src/
+    └── app.js   ← ⚠️ todo el código de la aplicación en un único archivo
 ```
 
-> **Nota**: El código de la aplicación está en el fichero `package.json` (que en este caso contiene código JavaScript en lugar de la configuración JSON habitual). El nombre del fichero es en sí mismo un error del estudiante; en una aplicación normal este fichero sería `app.js` o `index.js`.
-
-El proyecto `from` implementa toda la API REST en **un único archivo**, mezclando datos, lógica y rutas:
+El proyecto `from` implementa toda la API REST en **un único archivo** (`src/app.js`), mezclando datos, lógica y rutas:
 
 ```javascript
 // Todo en un único módulo: datos, lógica y rutas
@@ -82,7 +83,8 @@ app.post("/artists", function(req, res) {
   "dependencies": {
     "chalk": "^5.6.2",
     "cors": "^2.8.6",
-    "express": "^5.2.1"
+    "express": "^5.2.1",
+    "nanoid": "^5.1.6"
   }
 }
 ```
@@ -142,7 +144,7 @@ El cambio más importante es la división del código en tres capas con responsa
 ```
 from/                          to/
 ──────────────────────         ──────────────────────────────────────
-package.json (todo)     →      src/app.js        (presentación)
+src/app.js (todo)       →      src/app.js        (presentación)
                                src/controller.js  (lógica de negocio)
                                src/artists.dao.js (acceso a datos)
 ```
