@@ -33,12 +33,16 @@ Proyectos Interactivos 2 (PI2) es una asignatura enfocada en el desarrollo de ap
 | 2   | [Sesión 02 - APIs REST, Verbos HTTP y CRUD](sessions/session02/README.md)    | APIs RESTful, códigos de estado HTTP, verbos HTTP (GET, POST, PUT, DELETE), operaciones CRUD completas        | [todos](sessions/session02/projects/todos/)<br>[⚠&nbsp;todos&#8209;improved&nbsp;⚠](sessions/session02/projects/todos-improved/) |
 | 3   | [Sesión 03 - Arquitectura en Capas y SQLite](sessions/session03/README.md)   | Separación en capas (app/controller/DAO), persistencia con SQLite, corrección de ejercicio Spotify API        | [from](sessions/session03/projects/from/)<br>[to](sessions/session03/projects/to/) |
 | 4   | [Sesión 04 - Middlewares en Express y Frontend con Astro](sessions/session04/README.md) | Middlewares globales y por ruta (morgan, cors, rate-limit, custom), frontend con Astro + Tailwind CSS consumiendo la API REST | [backend](https://github.com/yurigo/PI2-2526-spotify-wip)<br>[frontend](https://github.com/yurigo/PI2-2526-astro-wip) |
+| 5   | [Sesión 05 - Actividades prácticas con Astro](sessions/session05/README.md) | Sesión práctica con tutoría: rutas dinámicas en Astro, props, fetch en frontmatter e integración de librerías externas | — |
 
 ## 📝 Actividades
 
 | Sesión | Actividad                                                                    | Descripción                                                                | Deadline                         |
 | ------ | ---------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------- |
 | 2      | [Spotify API REST - Artistas y Canciones](sessions/session02/ENUNCIADO.md) | API REST con rutas anidadas para gestionar artistas y sus canciones (CRUD) | 22 de febrero de 2026 a las 23:59 |
+| 5      | [Spotify Astro Frontend](sessions/session05/ENUNCIADO-01.md) | Frontend con Astro y Tailwind que consume la API REST de artistas y canciones, con rutas dinámicas | — |
+| 5      | [CV con Astro + Tailwind](sessions/session05/ENUNCIADO-02.md) | Reimplementar el CV personal con Astro, componentizando el diseño con Tailwind CSS | — |
+| 5      | [Landing Page con Astro](sessions/session05/ENUNCIADO-03.md) | Landing page de producto ficticio con Astro, Tailwind e integración de canvas-confetti | — |
 
 ## Recursos Adicionales
 
@@ -70,9 +74,14 @@ PI2-2526/
     │   └── projects/
     │       ├── from/       # Ejercicio original (monolítico, datos en memoria)
     │       └── to/         # Ejercicio corregido (capas + SQLite)
-    └── session04/          # Middlewares en Express y Frontend con Astro
+    ├── session04/          # Middlewares en Express y Frontend con Astro
+    │   ├── README.md
+    │   └── (proyectos en repositorios externos)
+    │       # backend: https://github.com/yurigo/PI2-2526-spotify-wip
+    │       # frontend: https://github.com/yurigo/PI2-2526-astro-wip
+    └── session05/          # Actividades prácticas con Astro
         ├── README.md
-        └── (proyectos en repositorios externos)
-            # backend: https://github.com/yurigo/PI2-2526-spotify-wip
-            # frontend: https://github.com/yurigo/PI2-2526-astro-wip
+        ├── ENUNCIADO-01.md # Actividad: Spotify Astro Frontend
+        ├── ENUNCIADO-02.md # Actividad: CV con Astro + Tailwind
+        └── ENUNCIADO-03.md # Actividad: Landing Page con Astro
 ```
