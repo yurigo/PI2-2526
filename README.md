@@ -40,9 +40,9 @@ Proyectos Interactivos 2 (PI2) es una asignatura enfocada en el desarrollo de ap
 | Sesión | Actividad                                                                    | Descripción                                                                | Deadline                         |
 | ------ | ---------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------- |
 | 2      | [Spotify API REST - Artistas y Canciones](sessions/session02/ENUNCIADO.md) | API REST con rutas anidadas para gestionar artistas y sus canciones (CRUD) | 22 de febrero de 2026 a las 23:59 |
-| 5      | [Spotify Astro Frontend](sessions/session05/ENUNCIADO-01.md) | Frontend con Astro y Tailwind que consume la API REST de artistas y canciones, con rutas dinámicas | — |
-| 5      | [CV con Astro + Tailwind](sessions/session05/ENUNCIADO-02.md) | Reimplementar el CV personal con Astro, componentizando el diseño con Tailwind CSS | — |
-| 5      | [Landing Page con Astro](sessions/session05/ENUNCIADO-03.md) | Landing page de producto ficticio con Astro, Tailwind e integración de canvas-confetti | — |
+| 5      | [Spotify Astro Frontend](sessions/session05/ENUNCIADO-01.md) | Frontend con Astro y Tailwind que consume la API REST de artistas y canciones, con rutas dinámicas | 15 de marzo de 2026 a las 23:59  |
+| 5      | [CV con Astro + Tailwind](sessions/session05/ENUNCIADO-02.md) | Reimplementar el CV personal con Astro, componentizando el diseño con Tailwind CSS | 15 de marzo de 2026 a las 23:59 |
+| 5      | [Landing Page con Astro](sessions/session05/ENUNCIADO-03.md) | Landing page de producto ficticio con Astro, Tailwind e integración de canvas-confetti | 15 de marzo de 2026 a las 23:59 |
 
 ## Recursos Adicionales
 
