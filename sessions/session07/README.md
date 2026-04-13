@@ -36,6 +36,116 @@ Durante la corrección se identificaron problemas habituales de deploy:
 
 ---
 
+## Problemas encontrados durante el deploy
+
+### 1. JavaScript de un componente Astro no funcionaba en producción
+
+**Síntoma**: el código JavaScript funcionaba correctamente en desarrollo (`npm run dev`) pero dejaba de funcionar tras publicar en Vercel. El mismo fallo se reproducía localmente haciendo `npm run build && npm run preview`.
+
+**Causa**: el código del cliente estaba cargado mediante la importación `?url` de Vite y añadido dinámicamente al DOM con un `<script type="module">`:
+
+```js
+// ❌ Enfoque problemático
+import clientScript from './client.js?url';
+
+const script = document.createElement('script');
+script.type = 'module';
+script.src = clientScript;
+document.head.appendChild(script);
+```
+
+Al inyectar el archivo como URL externa, **Astro no lo procesa** durante el build. Esto significa que cualquier referencia a `import.meta.env.PUBLIC_*` dentro de ese archivo permanece sin sustituir y vale `undefined` en producción.
+
+**Solución**: mover el código de inicialización del cliente dentro de un `<script>` estándar en el propio archivo `.astro`, para que Astro/Vite lo procese y reemplace los valores de `import.meta.env` en tiempo de build:
+
+```astro
+<script>
+  // ✅ Código de cliente procesado por Astro/Vite
+  // import.meta.env es reemplazado en tiempo de build
+  import { io } from 'socket.io-client';
+  const socket = io(import.meta.env.PUBLIC_SOCKET_URL);
+</script>
+```
+
+Si necesitas pasar un valor calculado desde el frontmatter al script de cliente, usa la directiva `define:vars`. Ten en cuenta que los bloques `<script define:vars>` se inyectan como scripts inline y **no admiten `import`**; úsalos para compartir variables simples:
+
+```astro
+---
+// Frontmatter (código de servidor)
+const socketUrl = import.meta.env.PUBLIC_SOCKET_URL;
+---
+
+<script define:vars={{ socketUrl }}>
+  // socketUrl está disponible como variable JS aquí
+  // ⚠️ No uses import() dentro de define:vars
+  console.log('Conectando a:', socketUrl);
+</script>
+```
+
+> 💡 La clave es que `import.meta.env` **solo funciona en código que Astro/Vite compila**. Si el fichero se sirve directamente como asset (vía `?url`), Astro no lo toca.
+
+Referencias:
+- [Scripts en Astro](https://docs.astro.build/es/guides/client-side-scripts/)
+- [define:vars en Astro](https://docs.astro.build/es/reference/directives-reference/#definevars)
+- [Commit con la solución aplicada](https://github.com/yurigo/constellation-cursors-client/commit/fa3aed3d75ce07484070c4ca0b0f1a6b01f84870)
+
+---
+
+### 2. La opción `output: 'server'` en `astro.config.mjs` rompe el deploy
+
+**Síntoma**: en desarrollo funcionaba todo correctamente, pero al desplegar en Vercel la aplicación no arrancaba y se mostraban errores de build o de ejecución.
+
+**Causa**: tener configurado `output: 'server'` (o `output: 'hybrid'`) activa el **modo SSR** de Astro, que requiere un servidor Node.js para ejecutarse. Vercel necesita un **adapter** específico instalado para poder servir ese tipo de proyecto:
+
+```js
+// ❌ astro.config.mjs — requiere adapter en producción
+export default defineConfig({
+  output: 'server', // SSR: necesita adapter
+});
+```
+
+Sin el adapter, Astro no sabe cómo empaquetar la aplicación para la plataforma de destino.
+
+**Solución A**: cambiar a `output: 'static'` si la aplicación no necesita SSR (es el caso habitual de un frontend que solo consume una API externa):
+
+```js
+// ✅ astro.config.mjs — generación estática, sin adapter
+export default defineConfig({
+  output: 'static',
+});
+```
+
+**Solución B**: mantener `output: 'server'` e instalar el adapter de Vercel:
+
+```bash
+npx astro add vercel
+```
+
+Esto añade automáticamente `@astrojs/vercel` y actualiza `astro.config.mjs`.
+
+Referencias:
+- [Modos de renderizado en Astro](https://docs.astro.build/es/basics/rendering-modes/)
+- [Adapter de Vercel para Astro](https://docs.astro.build/es/guides/integrations-guide/vercel/)
+
+---
+
+### 3. Cliente y servidor en el mismo repositorio dificulta el deploy
+
+**Síntoma**: al intentar conectar el proyecto a Vercel (cliente) y a Render (servidor), surgían conflictos porque ambas plataformas detectaban el mismo repositorio y trataban de desplegar el proyecto entero.
+
+**Causa**: Vercel está optimizado para frontends y Render para backends. Si cliente y servidor conviven en el mismo repositorio, es difícil indicar a cada plataforma qué parte debe desplegar.
+
+**Solución**: mantener **repositorios separados** desde el inicio:
+
+```
+repositorio-cliente/   → conectado a Vercel
+repositorio-servidor/  → conectado a Render
+```
+
+Cada repositorio tiene su propio `package.json`, su propio pipeline de CI/CD y su propia URL pública. El cliente apunta al servidor usando la variable de entorno `PUBLIC_SOCKET_URL`.
+
+---
+
 ## Conceptos difíciles – Referencias y ejemplos
 
 ### Deploy del cliente con Vercel
