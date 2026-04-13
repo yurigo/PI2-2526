@@ -35,6 +35,7 @@ Proyectos Interactivos 2 (PI2) es una asignatura enfocada en el desarrollo de ap
 | 4   | [Sesión 04 - Middlewares en Express y Frontend con Astro](sessions/session04/README.md) | Middlewares globales y por ruta (morgan, cors, rate-limit, custom), frontend con Astro + Tailwind CSS consumiendo la API REST | [backend](https://github.com/yurigo/PI2-2526-spotify-wip)<br>[frontend](https://github.com/yurigo/PI2-2526-astro-wip) |
 | 5   | [Sesión 05 - Actividades prácticas con Astro](sessions/session05/README.md) | Sesión práctica con tutoría: rutas dinámicas en Astro, props, fetch en frontmatter e integración de librerías externas | — |
 | 6   | [Sesión 06 - Comunicación en tiempo real con Socket.IO](sessions/session06/README.md) | Arquitectura cliente-servidor en tiempo real, introducción a Socket.IO, eventos bidireccionales y API Canvas de HTML5 | — |
+| 7   | [Sesión 07 - Deploy de aplicaciones en tiempo real](sessions/session07/README.md) | Deploy de cliente (Astro) en Vercel y servidor (Node.js + Socket.IO) en Render.com, CI/CD, CORS en producción y variables de entorno | — |
 
 ## 📝 Actividades
 
@@ -83,14 +84,16 @@ PI2-2526/
     │   └── (proyectos en repositorios externos)
     │       # backend: https://github.com/yurigo/PI2-2526-spotify-wip
     │       # frontend: https://github.com/yurigo/PI2-2526-astro-wip
-    └── session05/          # Actividades prácticas con Astro
-        ├── README.md
-        ├── ENUNCIADO-01.md # Actividad: Spotify Astro Frontend
-        ├── ENUNCIADO-02.md # Actividad: CV con Astro + Tailwind
-        └── ENUNCIADO-03.md # Actividad: Landing Page con Astro
-    └── session06/          # Comunicación en tiempo real con Socket.IO
-        ├── README.md
-        ├── ENUNCIADO-01.md # Actividad: Chat en tiempo real
-        ├── ENUNCIADO-02.md # Actividad: Pizarra colaborativa
-        └── ENUNCIADO-03.md # Actividad: Cursores compartidos
+    ├── session05/          # Actividades prácticas con Astro
+    │   ├── README.md
+    │   ├── ENUNCIADO-01.md # Actividad: Spotify Astro Frontend
+    │   ├── ENUNCIADO-02.md # Actividad: CV con Astro + Tailwind
+    │   └── ENUNCIADO-03.md # Actividad: Landing Page con Astro
+    ├── session06/          # Comunicación en tiempo real con Socket.IO
+    │   ├── README.md
+    │   ├── ENUNCIADO-01.md # Actividad: Chat en tiempo real
+    │   ├── ENUNCIADO-02.md # Actividad: Pizarra colaborativa
+    │   └── ENUNCIADO-03.md # Actividad: Cursores compartidos
+    └── session07/          # Deploy de aplicaciones en tiempo real
+        └── README.md
 ```
