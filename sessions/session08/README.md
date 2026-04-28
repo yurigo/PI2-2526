@@ -192,3 +192,32 @@ Se presenta el Laser (hardware) que usaremos para la practica.
 Se presenta el DAC (Digital to Analog Converter) que se usará para controlar el láser. (Ether Dream)
 Se presenta ILDA, el formato de datos que se usará para controlar el láser.
 Se presenta @laser-dac, la librería de Node.js que se usará para enviar datos al DAC.
+
+---
+
+Se hace un pequeño hello world para probar la librería @laser-dac y enviar un trazo simple al láser.
+
+```javascript
+import { DAC } from "@laser-dac/core";
+import { EtherDream } from "@laser-dac/ether-dream";
+
+const dac = new DAC();
+dac.use(new EtherDream());
+const started = await dac.start();
+if (started) {
+  const pps = 30000; // points per second
+  // draw a horizontal red line from left to right in the center
+  // @laser-dac/draw can help you with drawing points!
+  const scene = {
+    points: [
+      { x: 0.1, y: 0.5, r: 1, g: 0, b: 0 },
+      { x: 0.9, y: 0.5, r: 1, g: 0, b: 0 },
+    ],
+  };
+  dac.stream(scene, pps);
+}
+```
+
+Se prueba el código y no funciona por culpa de errores de conexión con el DAC. El ordenador está teniendo problemas para detectar el dispositivo Ether Dream, lo que impide que el código pueda enviar datos al láser.
+
+Se consigue en otro pc que funcione pero se reinicia al cabo de 500ms. Se sospecha que el problema puede estar relacionado con la poca cantidad de puntos que se están enviando (solo 2 puntos), lo que podría estar causando que el DAC no reciba suficientes datos para mantener la conexión estable.
