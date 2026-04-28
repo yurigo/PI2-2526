@@ -36,6 +36,7 @@ Proyectos Interactivos 2 (PI2) es una asignatura enfocada en el desarrollo de ap
 | 5   | [Sesión 05 - Actividades prácticas con Astro](sessions/session05/README.md) | Sesión práctica con tutoría: rutas dinámicas en Astro, props, fetch en frontmatter e integración de librerías externas | — |
 | 6   | [Sesión 06 - Comunicación en tiempo real con Socket.IO](sessions/session06/README.md) | Arquitectura cliente-servidor en tiempo real, introducción a Socket.IO, eventos bidireccionales y API Canvas de HTML5 | — |
 | 7   | [Sesión 07 - Deploy de aplicaciones en tiempo real](sessions/session07/README.md) | Deploy de cliente (Astro) en Vercel y servidor (Node.js + Socket.IO) en Render.com, CI/CD, CORS en producción y variables de entorno | — |
+| 8   | [Sesión 08 - Roles en Socket.IO y control de hardware con Node.js](sessions/session08/README.md) | Roles de usuario en Socket.IO (admin/usuario), cliente independiente con Express, introducción a `@laser-dac`, DAC Ether Dream e ILDA | — |
 
 ## 📝 Actividades
 
@@ -48,6 +49,7 @@ Proyectos Interactivos 2 (PI2) es una asignatura enfocada en el desarrollo de ap
 | 6      | [Chat en tiempo real con Socket.IO](sessions/session06/ENUNCIADO-01.md) | Chat multiusuario en tiempo real con Node.js + Express + Socket.IO como backend y Astro como frontend | — |
 | 6      | [Pizarra colaborativa en tiempo real](sessions/session06/ENUNCIADO-02.md) | Pizarra compartida con HTML Canvas donde varios usuarios dibujan simultáneamente en tiempo real | — |
 | 6      | [Cursores compartidos en tiempo real](sessions/session06/ENUNCIADO-03.md) | Visualización de los cursores de todos los usuarios conectados con throttling de eventos | — |
+| 8      | [El Laser — Proyecto Final](sessions/session08/PROYECTO.md) | Sistema cliente-servidor con Astro, Node.js y Socket.IO para controlar en tiempo real una pieza visual proyectada con luz láser | — |
 
 ## Recursos Adicionales
 
@@ -94,6 +96,10 @@ PI2-2526/
     │   ├── ENUNCIADO-01.md # Actividad: Chat en tiempo real
     │   ├── ENUNCIADO-02.md # Actividad: Pizarra colaborativa
     │   └── ENUNCIADO-03.md # Actividad: Cursores compartidos
-    └── session07/          # Deploy de aplicaciones en tiempo real
-        └── README.md
+    ├── session07/          # Deploy de aplicaciones en tiempo real
+    │   └── README.md
+    └── session08/          # Roles en Socket.IO y control de hardware con Node.js
+        ├── README.md
+        ├── PROYECTO.md     # Proyecto Final: El Laser
+        └── assets/         # GIFs y recursos visuales del proyecto láser
 ```
